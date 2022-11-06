@@ -52,7 +52,7 @@ let seattle = {
 }
 console.log(seattle.totalCookiesSold);
 // invokes the render method within the seattle object
-seattle.render();
+// seattle.render();
 
 // Tokyo
 let tokyo = {
@@ -91,7 +91,7 @@ let tokyo = {
   }
 }
 
-tokyo.render();
+// tokyo.render();
 
 // Dubai
 
@@ -131,7 +131,7 @@ let dubai = {
   }
 }
 
-dubai.render();
+// dubai.render();
 
 // Paris
 
@@ -171,7 +171,7 @@ let paris = {
   }
 }
 
-paris.render();
+// paris.render();
 
 // Lima
 
@@ -211,6 +211,6 @@ let lima = {
   }
 }
 
-lima.render();
+// lima.render();
 
 
