@@ -5,6 +5,8 @@ console.log('hello world');
 // An array of hours
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+let storeArr = [];
+
 // delcaring object
 
 // Seattle
@@ -34,7 +36,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   },
 
 //   // method that renders cookiesSoldPerHour method on to webpage
-//   render: function () {
+//   renderStoreCookies: function () {
 //     this.cookiesSoldPerHour();
 //     let seattleCookies = document.getElementById('seattle');
 //     for (let i = 0; i < hours.length; i++) {
@@ -51,8 +53,8 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   // method that calculate total number of cookies sold for the day
 // };
 // console.log(seattle.totalCookiesSold);
-// // invokes the render method within the seattle object
-// // seattle.render();
+// // invokes the renderStoreCookies method within the seattle object
+// // seattle.renderStoreCookies();
 
 // // Tokyo
 // let tokyo = {
@@ -77,7 +79,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //     }
 //   },
 
-//   render: function () {
+//   renderStoreCookies: function () {
 //     this.cookiesSoldPerHour();
 //     let tokyoCookies = document.getElementById('tokyo');
 //     for (let i = 0; i < hours.length; i++) {
@@ -91,7 +93,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   }
 // };
 
-// // tokyo.render();
+// // tokyo.renderStoreCookies();
 
 // // Dubai
 
@@ -117,7 +119,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //     }
 //   },
 
-//   render: function () {
+//   renderStoreCookies: function () {
 //     this.cookiesSoldPerHour();
 //     let dubaiCookies = document.getElementById('dubai');
 //     for (let i = 0; i < hours.length; i++) {
@@ -131,7 +133,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   }
 // };
 
-// // dubai.render();
+// // dubai.renderStoreCookies();
 
 // // Paris
 
@@ -157,7 +159,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //     }
 //   },
 
-//   render: function () {
+//   renderStoreCookies: function () {
 //     this.cookiesSoldPerHour();
 //     let parisCookies = document.getElementById('paris');
 //     for (let i = 0; i < hours.length; i++) {
@@ -171,7 +173,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   }
 // };
 
-// // paris.render();
+// // paris.renderStoreCookies();
 
 // // Lima
 
@@ -197,7 +199,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //     }
 //   },
 
-//   render: function () {
+//   renderStoreCookies: function () {
 //     this.cookiesSoldPerHour();
 //     let limaCookies = document.getElementById('lima');
 //     for (let i = 0; i < hours.length; i++) {
@@ -211,7 +213,7 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 //   }
 // };
 
-// lima.render();
+// lima.renderStoreCookies();
 
 // constructor for Pat's Salmon Cookies Store
 function Store(location, minCust, maxCust, avgCookieSale) {
@@ -222,6 +224,7 @@ function Store(location, minCust, maxCust, avgCookieSale) {
   this.avgCookieSale = avgCookieSale;
   this.cookiesSold = [];
   this.totalCookiesSold = 0;
+  storeArr.push(this);
 };
 
 // object methods being added to the Store constructor with the function "prototype"
@@ -251,7 +254,8 @@ Store.prototype.cookiesSoldPerHour = function () {
   }
 };
 
-Store.prototype.render = function() {
+// method that renders cookieSoldPerHour rows and totalCookiesSold data into table cells
+Store.prototype.renderStoreCookies = function() {
   this.cookiesSoldPerHour();
   let storeCookies = document.getElementById('StoreData');
   let storeTR = document.createElement('tr');
@@ -269,6 +273,47 @@ Store.prototype.render = function() {
   storeCookies.appendChild(storeTR);
 };
 
+// function that calculates and renders all stores total cookies sold per hour
+let renderFranchiseTotalCookies = function() {
+
+  // 1. declare a variable named table that selects the "tfoot element" as its value 
+  // 2. delcare a variable named footTR and assigns it the value of the created table row element (tr)
+  // 3. appends (aka adds) the child element (footTr) to the parent element (table)
+  let table = document.querySelector('tfoot');
+  let footTR = document.createElement('tr');
+  table.appendChild(footTR);
+
+  // 1. declare a variable named footTH and assigns it the value of the "th" element
+  // 2. selects the text content within the footTH object and assigns the value of a template literal 
+  // appends (aka adds) the child element (footTH) to the parent element (footTR)
+  let footTH = document.createElement('th');
+  footTH.textContent = `Total`;
+  footTR.appendChild(footTH);
+
+  let totalCookies = 0;
+
+  for(let i = 0; i < hours.length; i++) {
+    let hourlyTotal = 0;
+    for ( let j = 0; j < storeArr.length; j++) {
+      let cellVal = storeArr[j].cookiesSold[i];
+      hourlyTotal += cellVal;
+      totalCookies += cellVal;
+    }
+    // console.log(hourlyTotal);
+    let footTD = document.createElement('td');
+    footTD.textContent = hourlyTotal;
+    footTR.appendChild(footTD);
+  };
+  
+  let footTotal = document.createElement('td');
+  footTotal.textContent = totalCookies;
+  footTR.appendChild(footTotal);
+  // console.log(totalCookies);
+};
+
+
+
+
 // creating store objects
 
 let storeOne = new Store('Seattle', 23, 65, 6.3);
@@ -277,14 +322,16 @@ let storeThree = new Store('Dubai', 11, 38, 3.7);
 let storeFour = new Store('Paris', 20, 38, 2.3);
 let storeFive = new Store('Lima', 2, 16, 4.6);
 
-console.log(storeOne);
-console.log(storeTwo);
-console.log(storeThree);
-console.log(storeFour);
-console.log(storeFive);
+// console.log(storeOne);
+// console.log(storeTwo);
+// console.log(storeThree);
+// console.log(storeFour);
+// console.log(storeFive);
 
-storeOne.render();
-storeTwo.render();
-storeThree.render();
-storeFour.render();
-storeFive.render();
+storeOne.renderStoreCookies();
+storeTwo.renderStoreCookies();
+storeThree.renderStoreCookies();
+storeFour.renderStoreCookies();
+storeFive.renderStoreCookies();
+
+renderFranchiseTotalCookies();
