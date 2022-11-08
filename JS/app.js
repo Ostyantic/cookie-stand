@@ -5,212 +5,149 @@ console.log('hello world');
 // An array of hours
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-// delcaring object
-
-// Seattle
-let seattle = {
-
+// constructor for Pat's Salmon Cookies Store
+function Store(location, minCust, maxCust, avgCookieSale) {
   // object properties
-  location: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieSale: 6.3,
-  cookiesSold: [],
-  totalCookiesSold: 0,
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+  this.cookiesSold = [];
+  this.totalCookiesSold = 0;
+};
 
-  // method that calculate a random number of customers
-  randCust: function (min, max) {
-    return min + Math.random() * (max - min);
-  },
-  // *Math.round can be used to determine to decimal place**
-  // method that calculate random number of cookies sold per hour
-  cookiesSoldPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookieSale = Math.floor(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
-      this.cookiesSold.push(cookieSale);
-      this.totalCookiesSold += cookieSale;
-      // console.log(cookieSale);
-    }
-  },
+// object methods being added to the Store constructor with the "prototype" function 
 
-  // method that renders cookiesSoldPerHour method on to webpage
-  render: function () {
-    this.cookiesSoldPerHour();
-    let seattleCookies = document.getElementById('seattle');
-    for (let i = 0; i < hours.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${hours[i]}: ${this.cookiesSold[i]}`;
-      seattleCookies.appendChild(li);
-    }
-    let li = document.createElement('li');
-    li.textContent = `Total Cookies Sold: ${this.totalCookiesSold}`;
-    seattleCookies.appendChild(li);
+// method that calculates a random amount of customers that visit the shop
+Store.prototype.randCust = function (min, max) {
+  return min + Math.random() * (max - min);
+};
 
-  },
+// method that calculates a random amount of cookies purchased per hour.
 
-  // method that calculate total number of cookies sold for the day
-}
-console.log(seattle.totalCookiesSold);
-// invokes the render method within the seattle object
-seattle.render();
+// delcaring the object method as cookiesSoldPerHour
+Store.prototype.cookiesSoldPerHour = function() {
 
-// Tokyo
-let tokyo = {
+  // for loop to iterate through the length of the hours array
+  for (let i = 0; i < hours.length; i++) {
 
-  location: 'Tokyo',
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  cookiesSold: [],
-  totalCookiesSold: 0,
+    // Assign the rounded down number value of the randCust method using the values of minCust and maxCust as arugments and then multiplied by the value of avgCookiesSale
+    let cookieSale = Math.round(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
 
-  randCust: function (min, max) {
-    return min + Math.random() * (max - min);
-  },
+    // pushes the value of cookieSale into the cookiesSold array
+    this.cookiesSold.push(cookieSale);
 
-  cookiesSoldPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookieSale = Math.floor(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
-      this.cookiesSold.push(cookieSale);
-      this.totalCookiesSold += cookieSale;
-      // console.log(cookieSale);
-    }
-  },
+    // adds the current iteration value of cookieSale to totalCookiesSold
+    this.totalCookiesSold += cookieSale;
+    // console.log(cookieSale);
+  };
+};
 
-  render: function () {
-    this.cookiesSoldPerHour();
-    let tokyoCookies = document.getElementById('tokyo');
-    for (let i = 0; i < hours.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${hours[i]}: ${this.cookiesSold[i]}`;
-      tokyoCookies.appendChild(li);
-    }
-    let li = document.createElement('li');
-    li.textContent = `Total Cookies Sold: ${this.totalCookiesSold}`;
-    tokyoCookies.appendChild(li);
-  }
-}
+// method that renders cookieSoldPerHour rows and totalCookiesSold data on to table cells
+Store.prototype.renderStoreCookies = function() {
+  this.cookiesSoldPerHour();
+  let storeData = document.getElementById('StoreData');
+  let storeTR = document.createElement('tr');
+  let storeTH = document.createElement('th');
+  storeTH.textContent = this.location;
+  storeTR.appendChild(storeTH);
+  for (let i = 0; i < hours.length; i++) {
+    let storeTD = document.createElement('td');
+    storeTD.textContent = this.cookiesSold[i];
+    storeTR.appendChild(storeTD);
+  };
+  let totalTD = document.createElement('td');
+  totalTD.textContent = this.totalCookiesSold;
+  storeTR.appendChild(totalTD);
+  storeData.appendChild(storeTR);
+};
 
-tokyo.render();
+// function that calculates and renders all stores total cookies sold per hour
+function renderFranchiseTotalCookies() {
 
-// Dubai
+  // 1. declare a variable named table that selects the "tfoot element" as its value 
+  // 2. delcare a variable named footTR and assigns it the value of the created table row element (tr)
+  // 3. appends (aka adds) the child element (footTr) to the parent element (table)
+  let table = document.querySelector('tfoot');
+  let footTR = document.createElement('tr');
+  table.appendChild(footTR);
 
-let dubai = {
+  // 1. declare a variable named footTH and assigns it the value of the "th" element
+  // 2. selects the text content within the footTH object and assigns the value of a template literal 
+  // 3. appends (aka adds) the child element (footTH) to the parent element (footTR)
+  let footTH = document.createElement('th');
+  footTH.textContent = `Total`;
+  footTR.appendChild(footTH);
 
-  location: 'Dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 3.7,
-  cookiesSold: [],
-  totalCookiesSold: 0,
+  // declare a variable names totalCookies and assign it the value of 0, this will record the total cookier for all locations in the day
+  let totalCookies = 0;
 
-  randCust: function (min, max) {
-    return min + Math.random() * (max - min);
-  },
+  // for loop to iterate through each hour
+  for(let i = 0; i < hours.length; i++) {
 
-  cookiesSoldPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookieSale = Math.floor(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
-      this.cookiesSold.push(cookieSale);
-      this.totalCookiesSold += cookieSale;
-      // console.log(cookieSale);
-    }
-  },
+    // declare a variable name hourlyTotal and assign it the value of 0, this will record the each locations total cookies per hour
+    let hourlyTotal = 0;
 
-  render: function () {
-    this.cookiesSoldPerHour();
-    let dubaiCookies = document.getElementById('dubai');
-    for (let i = 0; i < hours.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${hours[i]}: ${this.cookiesSold[i]}`;
-      dubaiCookies.appendChild(li);
-    }
-    let li = document.createElement('li');
-    li.textContent = `Total Cookies Sold: ${this.totalCookiesSold}`;
-    dubaiCookies.appendChild(li);
-  }
-}
+    // for loop to iterate through each location during each hour iteration
+    for (let j = 0; j < storeArr.length; j++) {
+    
+      // declare a variable named cellVal and assign it the value of the store at index j's cookiesSold at index i
+      let cellVal = storeArr[j].cookiesSold[i];
 
-dubai.render();
+      // reassigns and adds the value of cellVal to the hourlyTotal and totalCookies variables
+      hourlyTotal += cellVal;
+      totalCookies += cellVal;
+    };
 
-// Paris
+    // console.log(hourlyTotal);
+    // 1. delcare a variable named footTD and assign it the value of a created "td" element
+    // 2. fills the td element with the value contained within the hourlyTotal variable
+    // 3. appends(aka adds) the child elemt(footTD) to the parent element(footTR)
+    let footTD = document.createElement('td');
+    footTD.textContent = hourlyTotal;
+    footTR.appendChild(footTD);
+  };
 
-let paris = {
+  // 1. delcare a variable named footTotal and assign it the value of a created "td" element
+  // 2. fills the td element with the value contained within the totalCookie variable
+  // 3. appends(aka adds) the child elemt(footTotal) to the parent element(footTR)
+  let footTotal = document.createElement('td');
+  footTotal.textContent = totalCookies;
+  footTR.appendChild(footTotal);
+  // console.log(totalCookies);
+};
 
-  location: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgCookieSale: 2.3,
-  cookiesSold: [],
-  totalCookiesSold: 0,
+// creating store objects
+let seattle = new Store('Seattle', 23, 65, 6.3);
+let tokyo = new Store('Tokyo', 3, 24, 1.2);
+let dubai = new Store('Dubai', 11, 38, 3.7);
+let paris = new Store('Paris', 20, 38, 2.3);
+let lima = new Store('Lima', 2, 16, 4.6);
 
-  randCust: function (min, max) {
-    return min + Math.random() * (max - min);
-  },
+// declare a variable named storeArr and assign it an array of store objects
+let storeArr = [
+  seattle,
+  tokyo,
+  dubai,
+  paris,
+  lima
+];
 
-  cookiesSoldPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookieSale = Math.floor(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
-      this.cookiesSold.push(cookieSale);
-      this.totalCookiesSold += cookieSale;
-      // console.log(cookieSale);
-    }
-  },
+// console logs of each store
+console.log(seattle);
+console.log(tokyo);
+console.log(dubai);
+console.log(paris);
+console.log(lima);
 
-  render: function () {
-    this.cookiesSoldPerHour();
-    let parisCookies = document.getElementById('paris');
-    for (let i = 0; i < hours.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${hours[i]}: ${this.cookiesSold[i]}`;
-      parisCookies.appendChild(li);
-    }
-    let li = document.createElement('li');
-    li.textContent = `Total Cookies Sold: ${this.totalCookiesSold}`;
-    parisCookies.appendChild(li);
-  }
-}
+// function named renderStoreData. When invoked, iterates through the arr parameter, each interation invokes the renderStoreCookies method at the current iteration index.
+function renderStoreData(arr) {
+  for(let i = 0; i < arr.length; i++) {
+    arr[i].renderStoreCookies();
+  };
+};
 
-paris.render();
-
-// Lima
-
-let lima = {
-
-  location: 'Lima',
-  minCust: 2,
-  maxCust: 16,
-  avgCookieSale: 4.6,
-  cookiesSold: [],
-  totalCookiesSold: 0,
-
-  randCust: function (min, max) {
-    return min + Math.random() * (max - min);
-  },
-
-  cookiesSoldPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookieSale = Math.floor(this.randCust(this.minCust, this.maxCust) * this.avgCookieSale);
-      this.cookiesSold.push(cookieSale);
-      this.totalCookiesSold += cookieSale;
-      // console.log(cookieSale);
-    }
-  },
-
-  render: function () {
-    this.cookiesSoldPerHour();
-    let limaCookies = document.getElementById('lima');
-    for (let i = 0; i < hours.length; i++) {
-      let li = document.createElement('li');
-      li.textContent = `${hours[i]}: ${this.cookiesSold[i]}`;
-      limaCookies.appendChild(li);
-    }
-    let li = document.createElement('li');
-    li.textContent = `Total Cookies Sold: ${this.totalCookiesSold}`;
-    limaCookies.appendChild(li);
-  }
-}
-
-lima.render();
-
-
+// 1. invoke renderStoreData function using storeArr as the argument.
+// 2. invoke renderFranchiseTotalCookies function
+renderStoreData(storeArr);
+renderFranchiseTotalCookies();

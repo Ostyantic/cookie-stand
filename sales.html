@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/style.css">
   <!-- <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -8,16 +10,59 @@
 </head>
 <body>
   <header>
-
-    <h1>Salmon Cookies Sales Data</h1>
-  
+    <h1>Pat's Salmon Cookies</h1>
+    <a href="index.html">Home</a>
   </header>
   <main>
-    <ul id='seattle'>Seattle</ul>
+    <table id="SalesTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>6:00am</th>
+          <th>7:00am</th>
+          <th>8:00am</th>
+          <th>9:00am</th>
+          <th>10:00am</th>
+          <th>11:00am</th>
+          <th>12:00pm</th>
+          <th>1:00pm</th>
+          <th>2:00pm</th>
+          <th>3:00pm</th>
+          <th>4:00pm</th>
+          <th>5:00pm</th>
+          <th>6:00pm</th>
+          <th>7:00pm</th>
+          <th>Daily Location Total</th>
+        </tr>
+      </thead>
+      <tbody id="StoreData">
+        <!-- <tr>
+          <th>Seattle</th>
+        </tr>
+        <tr>
+          <th>Tokyo</th>
+        </tr>
+        <tr>
+          <th>Dubai</th>
+        </tr>
+        <tr>
+          <th>Paris</th>
+        </tr>
+        <tr>
+          <th>Lima</th>
+        </tr> -->
+      </tbody>
+      <tfoot>
+        <!-- <tr>
+          <th>Total</th>
+        </tr> -->
+      </tfoot>
+    </table>
+    <!-- <ul id='seattle'>Seattle</ul>
     <ul id='tokyo'>Tokyo</ul>
     <ul id='dubai'>Dubai</ul>
     <ul id='paris'>Paris</ul>
-    <ul id='lima'>Lima</ul>
+    <ul id='lima'>Lima</ul> -->
   </main>
   <footer> &copy; Anthony Lopez 2022 </footer>
   <script src="JS/app.js"></script>
