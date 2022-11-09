@@ -1,3 +1,52 @@
+#BodyCont {
+  background-color: #BFA6A2;
+  display: flex;
+  flex-direction: column;
+}
+
+#HeaderCont {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin: 1rem; */
+  padding: 1rem;
+}
+
+#MainCont {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgCont {
+  border: 1px solid purple;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px;
+}
+
+#articleCont {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+header, footer {
+  background-color: #FA8072;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 36px;
+}
+
 table, th, td {
   border: 1px solid black;
   padding: 5px;
