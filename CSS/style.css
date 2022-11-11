@@ -27,9 +27,12 @@ a {
   border: 1px solid red;
   display: flex;
   flex-direction: column;
+  max-width: max-content;
 }
 
 #hero {
+  max-width: 100%;
+  height: auto;
   flex-grow: 1;
 }
 
@@ -59,6 +62,15 @@ h2 {
 
 .text { 
   flex-grow: 1;
+}
+
+#storeInfo { 
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#storeInfo p {
+  max-width: max-content;
 }
 
 
