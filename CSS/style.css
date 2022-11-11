@@ -1,5 +1,8 @@
-#BodyCont {
+body {
   background-color: #BFA6A2;
+}
+
+#BodyCont {
   display: flex;
   flex-direction: column;
 }
@@ -8,9 +11,16 @@
   border: 1px solid blue;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   /* margin: 1rem; */
   padding: 1rem;
+}
+
+a { 
+  width: 200px;
+  height: 15px;
+  
 }
 
 #MainCont {
@@ -19,19 +29,38 @@
   flex-direction: column;
 }
 
+#hero {
+  flex-grow: 1;
+}
+
 .imgCont {
   border: 1px solid purple;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
   margin: 30px;
 }
+
+/* .imgCont img {
+  width: 50%;
+} */
 
 #articleCont {
   border: 1px solid red;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   
 }
+
+h2 {
+  font-size: 32px;
+}
+
+.text { 
+  flex-grow: 1;
+}
+
 
 header, footer {
   background-color: #FA8072;
