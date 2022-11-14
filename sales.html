@@ -42,7 +42,28 @@
 
       </tfoot>
     </table>
-
+    <form>
+      <fieldset>
+        <legend>Add Store</legend>
+        <label for="">
+          Location:
+          <input type="text" name="storeLocation">
+        </label>
+        <label for="">
+          Mininum Customer:
+          <input type="text" name="minCust">
+        </label>
+        <label for="">
+          Maxiumu Customer:
+          <input type="text" name="maxCust">
+        </label>
+        <label for="">
+          Average Cookies Sold:
+          <input type="number" name="avgCookiesSold" step=".1" min="1" max="100">
+        </label>
+        <input type="button" value="Submit">
+      </fieldset>
+    </form>
   </main>
   <footer> &copy; Anthony Lopez 2022 </footer>
   <script src="JS/app.js"></script>
