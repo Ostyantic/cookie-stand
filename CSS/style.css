@@ -1,3 +1,4 @@
+/* body */
 body {
   background-color: #BFA6A2;
 }
@@ -7,6 +8,7 @@ body {
   flex-direction: column;
 }
 
+/* page header */
 #HeaderCont {
   border: 1px solid blue;
   display: flex;
@@ -17,11 +19,18 @@ body {
   padding: 1rem;
 }
 
+#mainSalmon {
+  height: 70px;
+  width: 200px;
+}
+
 a { 
   width: 200px;
   height: 15px;
   
 }
+
+/* page main */
 
 #MainCont {
   border: 1px solid red;
@@ -73,7 +82,6 @@ h2 {
   max-width: max-content;
 }
 
-
 header, footer {
   background-color: #FA8072;
   text-align: center;
@@ -88,6 +96,7 @@ h1 {
   font-size: 36px;
 }
 
+/* sales table */
 table, th, td {
   background-color: #A7AE9C;
   border: 1px solid black;
@@ -103,6 +112,7 @@ th {
   font-weight: bold;
 }
 
+/* form */
 fieldset {
   background-color: #A7AE9C;
   border: 1px solid black;
