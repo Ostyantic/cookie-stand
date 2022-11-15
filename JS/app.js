@@ -100,18 +100,18 @@ function renderFranchiseTotalCookies() {
     };
 
     // console.log(hourlyTotal);
-    // 1. delcare a variable named footTD and assign it the value of a created "td" element
+    // 1. delcare a variable named footTHNumbers and assign it the value of a created "td" element
     // 2. fills the td element with the value contained within the hourlyTotal variable
-    // 3. appends(aka adds) the child elemt(footTD) to the parent element(footTR)
-    let footTD = document.createElement('td');
-    footTD.textContent = hourlyTotal;
-    footTR.appendChild(footTD);
+    // 3. appends(aka adds) the child elemt(footTHNumbers) to the parent element(footTR)
+    let footTHNumbers = document.createElement('th');
+    footTHNumbers.textContent = hourlyTotal;
+    footTR.appendChild(footTHNumbers);
   };
 
   // 1. delcare a variable named footTotal and assign it the value of a created "td" element
   // 2. fills the td element with the value contained within the totalCookie variable
   // 3. appends(aka adds) the child elemt(footTotal) to the parent element(footTR)
-  let footTotal = document.createElement('td');
+  let footTotal = document.createElement('th');
   footTotal.textContent = totalCookies;
   footTR.appendChild(footTotal);
   // console.log(totalCookies);
@@ -134,11 +134,11 @@ let storeArr = [
 ];
 
 // console logs of each store
-console.log(seattle);
-console.log(tokyo);
-console.log(dubai);
-console.log(paris);
-console.log(lima);
+// console.log(seattle);
+// console.log(tokyo);
+// console.log(dubai);
+// console.log(paris);
+// console.log(lima);
 
 // function named renderStoreData. When invoked, iterates through the arr parameter, each interation invokes the renderStoreCookies method at the current iteration index.
 function renderStoreData(arr) {
@@ -146,6 +146,28 @@ function renderStoreData(arr) {
     arr[i].renderStoreCookies();
   };
 };
+
+// declaring a variable that and assign it the value of a selected HTML element with the id 'addStoreForm'.
+let addStoreForm = document.getElementById('addStoreForm');
+// adding an event listener method to the addStoreForm object. The arguments are the event type followed by the event handler.
+addStoreForm.addEventListener('submit', logUserInput);
+
+// Event Handler
+function logUserInput(event) {
+  event.preventDefault();
+  let form = event.target;
+  let location = form.storeLocation.value;
+  let minCust = form.minCust.value;
+  let maxCust = form.maxCust.value;
+  let avgCookies = form.avgCookiesSold.value;
+  
+  // 1. creating a new store using the Store constructor
+  // 2. console logging the newly created store
+  // 3. rendering the store using the .renderStoreCookies method
+  let store = new Store(location, minCust, maxCust, avgCookies);
+  console.log(store);
+  store.renderStoreCookies();
+}
 
 // 1. invoke renderStoreData function using storeArr as the argument.
 // 2. invoke renderFranchiseTotalCookies function

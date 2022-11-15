@@ -89,6 +89,7 @@ h1 {
 }
 
 table, th, td {
+  background-color: #A7AE9C;
   border: 1px solid black;
   padding: 5px;
   text-align: center;
@@ -100,4 +101,26 @@ table {
 
 th {
   font-weight: bold;
+}
+
+fieldset {
+  background-color: #A7AE9C;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 450px;
+  height: 125px;
+  padding: 1rem;
+  margin: auto;
+}
+
+legend { 
+  text-align: center;
+}
+
+label { 
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
 }
