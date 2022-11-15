@@ -17,7 +17,7 @@
     <table id="SalesTable">
       <thead>
         <tr>
-          <th></th>
+          <th>Store</th>
           <th>6:00am</th>
           <th>7:00am</th>
           <th>8:00am</th>
@@ -47,19 +47,19 @@
         <legend>Add Store</legend>
         <label for="">
           Location
-          <input type="text" name="storeLocation">
+          <input type="text" name="storeLocation" required="required">
         </label>
         <label for="">
           Mininum Customers
-          <input type="number" name="minCust" step="1" min="1" max="10000">
+          <input type="number" name="minCust" step="1" min="1" max="10000" required="required">
         </label>
         <label for="">
           Maxiumum Customers
-          <input type="number" name="maxCust" step="1" min="1" max="10000">
+          <input type="number" name="maxCust" step="1" min="1" max="10000" required="required">
         </label>
         <label for="">
           Average Cookies Sold
-          <input type="number" name="avgCookiesSold" step=".1" min="1" max="100">
+          <input type="number" name="avgCookiesSold" step=".1" min="1" max="100" required="required">
         </label>
         <button type="submit">Submit</button>
       </fieldset>
