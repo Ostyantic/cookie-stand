@@ -155,5 +155,14 @@ renderFranchiseTotalCookies();
 // declaring a variable that and assign it the value of a selected HTML element with the id 'addStoreForm'.
 let addStoreForm = document.getElementById('addStoreForm');
 // adding an event listener method to the addStoreForm object. The arguments are the event type followed by the event handler.
-addStoreForm.addEventListener('submit', logUserInput );
+addStoreForm.addEventListener('submit', logUserInput);
 
+// Event Handler
+function logUserInput(event) {
+event.preventDefault();
+let form = event.target;
+console.log(form.storeLocation.value);
+console.log(form.minCust.value);
+console.log(form.maxCust.value);
+console.log(form.avgCookiesSold.value);
+}
