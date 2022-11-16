@@ -9,9 +9,9 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 function Store(location, minCust, maxCust, avgCookieSale) {
   // object properties
   this.location = location;
-  this.minCust = minCust;
-  this.maxCust = maxCust;
-  this.avgCookieSale = avgCookieSale;
+  this.minCust = parseInt(minCust)
+  this.maxCust = parseInt(maxCust);
+  this.avgCookieSale = parseFloat(avgCookieSale);
   this.cookiesSold = [];
   this.totalCookiesSold = 0;
 };
@@ -68,46 +68,47 @@ function renderFranchiseTotalCookies() {
   // 1. declare a variable named table that selects the "tfoot element" as its value 
   // 2. delcare a variable named footTR and assigns it the value of the created table row element (tr)
   // 3. appends (aka adds) the child element (footTr) to the parent element (table)
-  let table = document.querySelector('tfoot');
+  let table = document.getElementById('footTotal');
   let footTR = document.createElement('tr');
   table.appendChild(footTR);
-
+  
   // 1. declare a variable named footTH and assigns it the value of the "th" element
   // 2. selects the text content within the footTH object and assigns the value of a template literal 
   // 3. appends (aka adds) the child element (footTH) to the parent element (footTR)
   let footTH = document.createElement('th');
   footTH.textContent = `Total`;
   footTR.appendChild(footTH);
-
+  
   // declare a variable names totalCookies and assign it the value of 0, this will record the total cookier for all locations in the day
   let totalCookies = 0;
-
+  
   // for loop to iterate through each hour
   for(let i = 0; i < hours.length; i++) {
-
+    
     // declare a variable name hourlyTotal and assign it the value of 0, this will record the each locations total cookies per hour
     let hourlyTotal = 0;
-
+    
     // for loop to iterate through each location during each hour iteration
     for (let j = 0; j < storeArr.length; j++) {
-    
+      
       // declare a variable named cellVal and assign it the value of the store at index j's cookiesSold at index i
       let cellVal = storeArr[j].cookiesSold[i];
-
+      
       // reassigns and adds the value of cellVal to the hourlyTotal and totalCookies variables
       hourlyTotal += cellVal;
       totalCookies += cellVal;
     };
-
+    
     // console.log(hourlyTotal);
     // 1. delcare a variable named footTHNumbers and assign it the value of a created "td" element
     // 2. fills the td element with the value contained within the hourlyTotal variable
     // 3. appends(aka adds) the child elemt(footTHNumbers) to the parent element(footTR)
+    
     let footTHNumbers = document.createElement('th');
     footTHNumbers.textContent = hourlyTotal;
     footTR.appendChild(footTHNumbers);
   };
-
+  
   // 1. delcare a variable named footTotal and assign it the value of a created "td" element
   // 2. fills the td element with the value contained within the totalCookie variable
   // 3. appends(aka adds) the child elemt(footTotal) to the parent element(footTR)
@@ -115,6 +116,10 @@ function renderFranchiseTotalCookies() {
   footTotal.textContent = totalCookies;
   footTR.appendChild(footTotal);
   // console.log(totalCookies);
+  
+  // let allValues = document.querySelectorAll('td');
+  // allValues.textContent = 
+  // table.appendChild(allValues);
 };
 
 // creating store objects
@@ -134,11 +139,11 @@ let storeArr = [
 ];
 
 // console logs of each store
-// console.log(seattle);
-// console.log(tokyo);
-// console.log(dubai);
-// console.log(paris);
-// console.log(lima);
+console.log(seattle);
+console.log(tokyo);
+console.log(dubai);
+console.log(paris);
+console.log(lima);
 
 // function named renderStoreData. When invoked, iterates through the arr parameter, each interation invokes the renderStoreCookies method at the current iteration index.
 function renderStoreData(arr) {
@@ -157,17 +162,21 @@ function logUserInput(event) {
   event.preventDefault();
   let form = event.target;
   let location = form.storeLocation.value;
-  let minCust = form.minCust.value;
-  let maxCust = form.maxCust.value;
-  let avgCookies = form.avgCookiesSold.value;
+  let minimumCust = parseInt(form.minimumCust.value);
+  let maximumCust = parseInt(form.maximumCust.value);
+  let avgCookies = parseFloat(form.avgCookiesSold.value);
   
   // 1. creating a new store using the Store constructor
   // 2. console logging the newly created store
   // 3. rendering the store using the .renderStoreCookies method
-  let store = new Store(location, minCust, maxCust, avgCookies);
+  let store = new Store(location, minimumCust, maximumCust, avgCookies);
+  // store.cookiesSoldPerHour();
+  // storeArr.push(store);
   console.log(store);
   store.renderStoreCookies();
-}
+};
+
+// console.log(storeArr);
 
 // 1. invoke renderStoreData function using storeArr as the argument.
 // 2. invoke renderFranchiseTotalCookies function

@@ -1,71 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="CSS/reset.css">
   <link rel="stylesheet" href="CSS/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
   <!-- <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <title>Pat's Salmon Cookies</title>
 </head>
+
 <body>
   <header>
     <h1>Pat's Salmon Cookies Sales Data</h1>
     <a href="index.html">Home</a>
   </header>
   <main>
-    <table id="SalesTable">
-      <thead>
-        <tr>
-          <th>Store</th>
-          <th>6:00am</th>
-          <th>7:00am</th>
-          <th>8:00am</th>
-          <th>9:00am</th>
-          <th>10:00am</th>
-          <th>11:00am</th>
-          <th>12:00pm</th>
-          <th>1:00pm</th>
-          <th>2:00pm</th>
-          <th>3:00pm</th>
-          <th>4:00pm</th>
-          <th>5:00pm</th>
-          <th>6:00pm</th>
-          <th>7:00pm</th>
-          <th>Daily Location Total</th>
-        </tr>
-      </thead>
-      <tbody id="StoreData">
+    <div id="salesForm">
+      <form id="addStoreForm">
+        <fieldset>
+          <legend>Add Store</legend>
+          <label for="">
+            Location
+            <input type="text" name="storeLocation" required="required">
+          </label>
+          <label for="">
+            Mininum Customers
+            <input type="number" name="minimumCust" step="1" min="1" required="required">
+          </label>
+          <label for="">
+            Maxiumum Customers
+            <input type="number" name="maximumCust" step="1" min="1" required="required">
+          </label>
+          <label for="">
+            Average Cookies Sold
+            <input type="number" name="avgCookiesSold" step=".1" min="1" required="required">
+          </label>
+          <button type="submit">Add</button>
+        </fieldset>
+      </form>
+    </div>
+    <div id="table">
+      <table id="SalesTable">
+        <thead>
+          <tr>
+            <th>Store</th>
+            <th>6:00am</th>
+            <th>7:00am</th>
+            <th>8:00am</th>
+            <th>9:00am</th>
+            <th>10:00am</th>
+            <th>11:00am</th>
+            <th>12:00pm</th>
+            <th>1:00pm</th>
+            <th>2:00pm</th>
+            <th>3:00pm</th>
+            <th>4:00pm</th>
+            <th>5:00pm</th>
+            <th>6:00pm</th>
+            <th>7:00pm</th>
+            <th>Daily Location Total</th>
+          </tr>
+        </thead>
+        <tbody id="StoreData">
 
-      </tbody>
-      <tfoot>
+        </tbody>
+        <tfoot id="footTotal">
 
-      </tfoot>
-    </table>
-    <form id="addStoreForm">
-      <fieldset>
-        <legend>Add Store</legend>
-        <label for="">
-          Location
-          <input type="text" name="storeLocation" required="required">
-        </label>
-        <label for="">
-          Mininum Customers
-          <input type="number" name="minCust" step="1" min="1" max="10000" required="required">
-        </label>
-        <label for="">
-          Maxiumum Customers
-          <input type="number" name="maxCust" step="1" min="1" max="10000" required="required">
-        </label>
-        <label for="">
-          Average Cookies Sold
-          <input type="number" name="avgCookiesSold" step=".1" min="1" max="100" required="required">
-        </label>
-        <button type="submit">Submit</button>
-      </fieldset>
-    </form>
+        </tfoot>
+      </table>
+    </div>
   </main>
-  <footer> &copy; Anthony Lopez 2022 </footer>
+  <footer id="FootCont">
+    <div id="storeInfo">
+      <div class="storeAHC">
+        <h3>Store Locations</h3>
+        <p>42 Feelgood Rd. Seattle, WA 98101</p>
+        <p>801 Reverie Dr. Lima 8293482</p>
+        <p>222 Gansie Blvd. Tokyo, JP 999302</p>
+        <p>5 Holysmokes Circle Dubai 2389302</p>
+        <p>4004 OuiOui Court Paris 10293</p>
+      </div>
+      <div class="storeAHC">
+        <h3>Store Hours</h3>
+        <p>6:00am - 8:00pm</p>
+      </div>
+      <div class="storeAHC">
+        <h3>Contact US</h3>
+        <p>Ph: 777-777-7777</p>
+        <p>Fax: 888-999-0001</p>
+      </div>
+    </div>
+    &copy; Anthony Lopez 2022
+  </footer>
   <script src="JS/app.js"></script>
 </body>
 </html>

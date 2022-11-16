@@ -1,11 +1,16 @@
+/* ----------- body ---------- */
+
 body {
-  background-color: #BFA6A2;
+  background-color: #00AAFF;
+  /* font-family: 'Bubblegum Sans'; */
 }
 
 #BodyCont {
   display: flex;
   flex-direction: column;
 }
+
+/* ------------- page header -------------- */
 
 #HeaderCont {
   border: 1px solid blue;
@@ -17,11 +22,25 @@ body {
   padding: 1rem;
 }
 
+#mainSalmon {
+  height: 70px;
+  width: 200px;
+}
+
 a { 
   width: 200px;
   height: 15px;
+  text-decoration: none;
+  color: #DC143C;
   
 }
+
+a:hover {
+  color: #0edcea;
+  
+}
+
+/* ----------- page main ----------- */
 
 #MainCont {
   border: 1px solid red;
@@ -69,10 +88,14 @@ h2 {
   justify-content: space-evenly;
 }
 
+.storeAHC { 
+  display: flex;
+  flex-direction: column;
+}
+
 #storeInfo p {
   max-width: max-content;
 }
-
 
 header, footer {
   background-color: #FA8072;
@@ -84,15 +107,22 @@ header {
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: 'Bubblegum Sans', sans-serif;
+  color: #DC143C;
   font-size: 36px;
 }
 
+/* ------------- sales table ------------ */
+
 table, th, td {
-  background-color: #A7AE9C;
+  background-color: #02BC6B;
   border: 1px solid black;
   padding: 5px;
   text-align: center;
+}
+
+#table {
+  margin: 2rem;
 }
 
 table {
@@ -103,8 +133,14 @@ th {
   font-weight: bold;
 }
 
+/* ---------------- form ---------------- */
+
+#salesForm {
+  margin: 5px;
+}
+
 fieldset {
-  background-color: #A7AE9C;
+  background-color: #02BC6B;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
