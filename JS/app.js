@@ -171,9 +171,16 @@ function logUserInput(event) {
   // 3. rendering the store using the .renderStoreCookies method
   let store = new Store(location, minimumCust, maximumCust, avgCookies);
   // store.cookiesSoldPerHour();
-  // storeArr.push(store);
+  storeArr.push(store);
   console.log(store);
   store.renderStoreCookies();
+
+
+  let refresh = document.getElementById('footTotal');
+  // console.log(refresh.innerHTML);
+  refresh.innerHTML = '';
+  renderFranchiseTotalCookies();
+  // console.log(refresh.innerHTML);
 };
 
 // console.log(storeArr);
@@ -182,3 +189,5 @@ function logUserInput(event) {
 // 2. invoke renderFranchiseTotalCookies function
 renderStoreData(storeArr);
 renderFranchiseTotalCookies();
+
+
