@@ -2,7 +2,7 @@
 
 body {
   background-color: #00AAFF;
-  /* font-family: 'Bubblegum Sans'; */
+  font-family: 'Bubblegum Sans';
 }
 
 #BodyCont {
@@ -13,7 +13,7 @@ body {
 /* ------------- page header -------------- */
 
 #HeaderCont {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -43,20 +43,28 @@ a:hover {
 /* ----------- page main ----------- */
 
 #MainCont {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   max-width: max-content;
 }
 
 #hero {
-  max-width: 100%;
+  max-width: 75%;
   height: auto;
   flex-grow: 1;
 }
 
+.imgContTop { 
+  /* border: 1px solid grey; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+}
+
 .imgCont {
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   display: flex;
   justify-content: space-between;
   /* flex-wrap: wrap; */
@@ -68,7 +76,7 @@ a:hover {
 } */
 
 #articleCont {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -77,10 +85,19 @@ a:hover {
 
 h2 {
   font-size: 32px;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .text { 
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
+
+}
+
+p {
+  color: darkblue;
 }
 
 #storeInfo { 
@@ -102,6 +119,10 @@ header, footer {
   text-align: center;
 }
 
+footer { 
+  color: #DC143C;
+}
+
 header {
   text-align: center;
 }
@@ -112,17 +133,27 @@ h1 {
   font-size: 36px;
 }
 
+h2 {
+  color: darkblue;
+}
+
+button {
+  width : 35%;
+  margin: auto;
+}
+
 /* ------------- sales table ------------ */
 
 table, th, td {
   background-color: #02BC6B;
-  border: 1px solid black;
+  border: 1px solid azure;
   padding: 5px;
   text-align: center;
 }
 
 #table {
   margin: 2rem;
+  text-align: center;
 }
 
 table {
@@ -130,7 +161,12 @@ table {
 }
 
 th {
-  font-weight: bold;
+  font-weight: bolder;
+  background-color: olivedrab;
+}
+
+#StoreData th {
+  background-color: #02BC6B;
 }
 
 /* ---------------- form ---------------- */
@@ -141,7 +177,8 @@ th {
 
 fieldset {
   background-color: #02BC6B;
-  border: 1px solid black;
+  border: 2px solid azure;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,7 +189,11 @@ fieldset {
 }
 
 legend { 
+  background-color: olivedrab;
+  width: 100px;
   text-align: center;
+  border: 2px solid azure;
+  border-radius: 5px;
 }
 
 label { 
